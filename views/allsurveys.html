@@ -1,0 +1,42 @@
+<div class="well well-sm">
+<form ng-submit="allsurveys.login()">
+    username:<input type="text" ng-model="allsurveys.uname">
+    password:<input type="password" ng-model="allsurveys.pword">
+    <button class="btn btn-primary">Submit</button>
+</form>
+    
+
+</div>
+<div class="well well-sm" style="background-color: white">
+<div class="container" ng-repeat="data in allsurveys.surveys">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview">
+                    <a href="#/{{data.surveyId}}">
+                        <h2 class="post-title">
+                            {{data.surveyTitle}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{data.surveySubtitle}}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by Salman</p>
+                </div>
+                <hr>
+                
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#/create" ng-show="allsurveys.newdata==1">>create &rarr;</a>
+                        <a href="#/{{data.surveyId}}/edit" ng-show="allsurveys.newdata==1">Edit</a>
+                        <a href="#/{{data.surveyId}}/question/create" ng-show="allsurveys.newdata==1">>Question create</a>
+                        <button type="" class="btn btn-danger" ng-click="allsurveys.deletesurvey(data.surveyId)" ng-show="allsurveys.newdata==1">Delete</button>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <hr>

@@ -1,0 +1,42 @@
+<div class="well well-sm" style="background-color: white">
+<div class="well well-sm" style="background-color: white"><strong><p class="text-center" style="background-color: white">{{singlesurvey.data.instructions}}</p></strong></div>
+<h3 class="text-center">{{singlesurvey.data.surveyTitle}}</h3><br>
+<h5 class="text-center">{{singlesurvey.data.surveySubtitle}}</h5><br>
+
+<div>
+	<button type="" ng-click="singlesurvey.bata()" class="btn btn-default">Edit question data</button>
+</div>
+<div class="well well-sm" style="background-color: white">
+<strong><h3 class="text-center">Questions</h3></strong></hr>
+<div ng-repeat="questions in singlesurvey.allquestions">
+<div ng-if="$index==singlesurvey.questionindex">
+    {{$index+1}}.{{questions.questionText}}<br>
+
+<div ng-repeat="options in questions.questionOptions">
+<ul>
+	<li><input type="radio" value="{{Options}}" ng-click="singlesurvey.createanswers(questions.questionId,$index+1);singlesurvey.newquestionindex()">{{options}}</li></ul><br>
+
+</div>
+<button class="btn btn-default" type="" ng-click="singlesurvey.deleteallanswers(questions.questionId)">Delete all the answers</button>
+<button class="btn btn-default btn-primary" ng-click="singlesurvey.skipquestion(questions.questionId);singlesurvey.newquestionindex()">Skip Question</button>
+<a href="#/questions/{{questions.questionId}}/edit" ng-show="singlesurvey.newdata==1">Edit question </a>
+<a href="#/questions/{{questions.questionId}}/options/create" ng-show="singlesurvey.newdata==1">Create options</a></div>
+
+
+</div>
+<div ng-show="singlesurvey.questionindex===singlesurvey.allquestions.length">
+<p>Thank you</p>
+
+	
+</div>
+</div>
+<div class="well well-sm" ng-show="singlesurvey.formdata==1" style="background-color: white">
+	<form  ng-show="singlesurvey.formdata==1" ng-submit="singlesurvey.submitdata()">
+		<input type="text" ng-model="singlesurvey.uname" >
+		<input type="password" ng-model="singlesurvey.pword">
+		<button type="submit">submit</button> 
+	</form>
+</div>
+
+
+</div>
